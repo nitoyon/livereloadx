@@ -1,0 +1,13 @@
+{
+  "name": "node-livereloadx",
+  "version": "0.0.1",
+  "description": "An implementation of the LiveReload 2 server in Node.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nitoyon/node-livereloadx.git"
+  },
+  "dependencies": {
+    "fsmonitor": ">= 0.2.0",
+    "websocket.io": ">= 0.2.1"
+  }
+}

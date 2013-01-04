@@ -1,13 +1,36 @@
 {
-  "name": "node-livereloadx",
+  "name": "livereloadx",
   "version": "0.0.1",
   "description": "An implementation of the LiveReload 2 server in Node.js",
+  "main": "lib/index",
+  "bin": {
+    "livereloadx": "bin/livereloadx.js"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/nitoyon/node-livereloadx.git"
+    "url": "https://github.com/nitoyon/livereloadx.git"
   },
   "dependencies": {
+    "commander": ">= 1.1.1",
     "fsmonitor": ">= 0.2.0",
     "websocket.io": ">= 0.2.1"
-  }
+  },
+  "devDependencies": {
+    "mocha": ">= 1.7.4",
+    "should": ">= 1.2.1"
+  },
+  "author": "Kenichi Saita <nitoyon@gmail.com>",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "LiveReload",
+    "browser",
+    "test"
+  ]
 }

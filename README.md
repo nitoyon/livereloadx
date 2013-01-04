@@ -16,13 +16,10 @@ Install
 
 Install [Node.js](http://nodejs.org/).
 
-Install `node-livereloadx`.
-
-Install dependant modules.
+Install `livereloadx`.
 
 ```
-$ cd path/to/node-livereloadx
-$ npm install
+$ npm -g install livereloadx
 ```
 
 Choose one of following method to embed JavaScript snippet.
@@ -33,7 +30,8 @@ Choose one of following method to embed JavaScript snippet.
 JavaScript snippet:
 
 ```html
-<script>if (location.hostname == "localhost") { document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=2"></' + 'script>') }</script>
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+':35729/livereload.js?snipver=2"></' + 'script>')</script>
 ```
 
 
@@ -43,7 +41,7 @@ Run
 Start server on your command line.
 
 ```
-$ node livereloadx.js path/to/dir
+$ livereloadx path/to/dir
 ```
 
 Open the site. If you chose to use browser extensions, enable LiveReload by clicking the LiveReload toolbar button.
@@ -55,8 +53,7 @@ Related Projects
 ----------------
 
 * [livereload](https://github.com/livereload/): Official version.
-* [josh/node-livereload](https://github.com/josh/node-livereload): Reimplementation of LiveReload 1.X server in node.js
-* [clonn/simple-livereload](https://github.com/clonn/simple-livereload): Another reimplementation of LiveReload 1.X server in node.js
+* [josh/node-livereload](https://github.com/josh/node-livereload), [clonn/simple-livereload](https://github.com/clonn/simple-livereload), [khoomeister/livereloaded](https://github.com/khoomeister/livereloaded): Reimplementation of LiveReload 1.X server in node.js
 * [usualoma/node-livereload-hub](https://github.com/usualoma/node-livereload-hub): Yet another reimplementation of LiveReload 1.X server (Reload via the HTTP request)
 * [guard/guard-livereload](https://github.com/guard/guard-livereload): Ruby implementation running with guard.
 
@@ -64,4 +61,4 @@ Related Projects
 License
 -------
 
-his code is released under the MIT license.
+This code is released under the MIT license.

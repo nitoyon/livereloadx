@@ -6,7 +6,7 @@ describe('config#parseArgv test', function() {
 		var conf = config.parseArgv(['node', 'livereloadx', 'dir']);
 		conf.should.have.property('port', 35729);
 		conf.should.have.property('liveCSS', true);
-		conf.should.have.property('liveImage', true);
+		conf.should.have.property('liveImg', true);
 		conf.should.have.property('dir', 'dir');
 	});
 
@@ -26,12 +26,12 @@ describe('config#parseArgv test', function() {
 		conf.should.have.property('liveCSS', false);
 	});
 
-	it('set no-liveImage', function() {
+	it('set no-liveImg', function() {
 		var conf = config.parseArgv(['node', 'livereloadx', '-I', 'dir']);
-		conf.should.have.property('liveImage', false);
+		conf.should.have.property('liveImg', false);
 
-		conf = config.parseArgv(['node', 'livereloadx', '--no-liveImage', 'dir']);
-		conf.should.have.property('liveImage', false);
+		conf = config.parseArgv(['node', 'livereloadx', '--no-liveImg', 'dir']);
+		conf.should.have.property('liveImg', false);
 	});
 });
 
@@ -40,7 +40,7 @@ describe('config#setDefaultValue test', function() {
 		var conf = config.setDefaultValue({});
 		conf.should.have.property('port', 35729);
 		conf.should.have.property('liveCSS', true);
-		conf.should.have.property('liveImage', true);
+		conf.should.have.property('liveImg', true);
 	});
 
 	it('set port', function() {
@@ -53,9 +53,9 @@ describe('config#setDefaultValue test', function() {
 		conf.should.have.property('liveCSS', false);
 	});
 
-	it('set liveImage', function() {
-		var conf = config.setDefaultValue({liveImage: false});
-		conf.should.have.property('liveImage', false);
+	it('set liveImg', function() {
+		var conf = config.setDefaultValue({liveImg: false});
+		conf.should.have.property('liveImg', false);
 	});
 
 	it('invalid key should throw', function() {

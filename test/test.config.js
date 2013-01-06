@@ -5,6 +5,7 @@ describe('config#parseArgv test', function() {
 	it('default result', function() {
 		var conf = config.parseArgv(['node', 'livereloadx', 'dir']);
 		conf.should.have.property('port', 35729);
+		conf.should.have.property('verbose', false);
 		conf.should.have.property('liveCSS', true);
 		conf.should.have.property('liveImg', true);
 		conf.should.have.property('dir', 'dir');
@@ -16,6 +17,14 @@ describe('config#parseArgv test', function() {
 
 		conf = config.parseArgv(['node', 'livereloadx', '-p', '1234', 'dir']);
 		conf.should.have.property('port', 1234);
+	});
+
+	it('set verbose', function() {
+		var conf = config.parseArgv(['node', 'livereloadx', '-v', 'dir']);
+		conf.should.have.property('verbose', true);
+
+		var conf = config.parseArgv(['node', 'livereloadx', '--verbose', 'dir']);
+		conf.should.have.property('verbose', true);
 	});
 
 	it('set no-liveCSS', function() {

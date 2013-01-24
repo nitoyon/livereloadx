@@ -37,7 +37,6 @@ describe('StaticHandler', function() {
   it('should handle /test.txt', function(done) {
     http.get('http://localhost:8000/test.txt', function(res) {
       res.should.have.status(200);
-      res.should.have.header('content-length', '36');
       res.on('data', function(chunk) {
         chunk.should.match(/test\.txt content/);
         chunk.should.not.match(/<script>/);
@@ -49,7 +48,6 @@ describe('StaticHandler', function() {
   it('should handle /has-body.html', function(done) {
     http.get('http://localhost:8000/has-body.html', function(res) {
       res.should.have.status(200);
-      res.should.have.header('content-length', '197');
       res.should.be.html;
       res.on('data', function(chunk) {
         chunk.toString().should.match(/<html>/);
@@ -63,7 +61,6 @@ describe('StaticHandler', function() {
   it('should handle /has-no-body.html', function(done) {
     http.get('http://localhost:8000/has-no-body.html', function(res) {
       res.should.have.status(200);
-      res.should.have.header('content-length', '165');
       res.should.be.html;
       res.on('data', function(chunk) {
         chunk.toString().should.match(/<\/p>\r?\n<script>/);
@@ -76,7 +73,6 @@ describe('StaticHandler', function() {
   it('should handle /utf8.html', function(done) {
     http.get('http://localhost:8000/utf8.html', function(res) {
       res.should.have.status(200);
-      res.should.have.header('content-length', '305');
       res.should.be.html;
       res.on('data', function(chunk) {
         chunk.toString().should.match(/:8000\/livereload.js/);
@@ -88,7 +84,6 @@ describe('StaticHandler', function() {
   it('should handle /empty.htm', function(done) {
     http.get('http://localhost:8000/empty.htm', function(res) {
       res.should.have.status(200);
-      res.should.have.header('content-length', '152');
       res.should.be.html;
       res.on('data', function(chunk) {
         chunk.toString().should.match(/:8000\/livereload.js/);

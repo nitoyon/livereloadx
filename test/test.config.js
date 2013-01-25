@@ -3,13 +3,22 @@ var should = require('should')
 
 describe('config#parseArgv', function() {
   it('default result', function() {
-    var conf = config.parseArgv(['node', 'livereloadx', 'dir']);
+    var conf = config.parseArgv(['node', 'livereloadx']);
     conf.should.have.property('port', 35729);
     conf.should.have.property('verbose', false);
     conf.should.have.property('liveCSS', true);
     conf.should.have.property('liveImg', true);
+    conf.should.have.property('dir', '.');
+  });
+
+  it('set dir', function() {
+    var conf = config.parseArgv(['node', 'livereloadx', 'dir']);
+    conf.should.have.property('dir', 'dir');
+
+    conf = config.parseArgv(['node', 'livereloadx', '-p', '1234', 'dir']);
     conf.should.have.property('dir', 'dir');
   });
+
 
   it('set port', function() {
     var conf = config.parseArgv(['node', 'livereloadx', '--port', '80', 'dir']);
@@ -41,12 +50,6 @@ describe('config#parseArgv', function() {
 
     conf = config.parseArgv(['node', 'livereloadx', '--no-liveImg', 'dir']);
     conf.should.have.property('liveImg', false);
-  });
-
-  it('no dir', function() {
-    (function() {
-      config.parseArgv(['node', 'livereloadx']);
-    }).should.throw();
   });
 
   it('invalid port', function() {

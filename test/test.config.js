@@ -1,7 +1,7 @@
 var should = require('should')
   , config = require('../lib/config');
 
-describe('config#parseArgv test', function() {
+describe('config#parseArgv', function() {
   it('default result', function() {
     var conf = config.parseArgv(['node', 'livereloadx', 'dir']);
     conf.should.have.property('port', 35729);
@@ -41,6 +41,18 @@ describe('config#parseArgv test', function() {
 
     conf = config.parseArgv(['node', 'livereloadx', '--no-liveImg', 'dir']);
     conf.should.have.property('liveImg', false);
+  });
+
+  it('no dir', function() {
+    (function() {
+      config.parseArgv(['node', 'livereloadx']);
+    }).should.throw();
+  });
+
+  it('invalid port', function() {
+    (function() {
+      config.parseArgv(['node', 'livereloadx', '-p', 'a', 'dir']);
+    }).should.throw();
   });
 });
 

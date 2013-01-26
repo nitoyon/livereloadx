@@ -40,7 +40,7 @@ Usage
 Start server on your command line.
 
 ```
-$ livereloadx path/to/dir
+$ livereloadx [path/to/dir]
 ```
 
 Open the site. If you chose to use browser extensions, enable LiveReload by clicking the LiveReload toolbar button.
@@ -53,7 +53,7 @@ Now, when you modify any files under `path/to/dir`, your browser is automaticall
 Use `-s` or `--static` option to start sever in static mode.
 
 ```
-livereloadx -s [-p 35729] path/to/dir
+livereloadx -s [-p 35729] [path/to/dir]
 ```
 
 In static mode, _LiveReloadX_ works as a static web server whose document root is `path/to/dir`. An access to `http://localhost:35729/` refers to `path/to/dir/index.html`. What's more, _LiveReloadX_ automatically add [JavaScript snippet](#javascript-snippet) to HTML file.

@@ -2,6 +2,26 @@ var should = require('should')
   , config = require('../lib/config');
 
 describe('config#parseArgv', function() {
+  var exited = false
+    , oldProcessExit = process.exit
+    , oldConsoleError = console.error;
+
+  // test process.exit()
+  before(function() {
+    process.exit = function() {
+      exited = true;
+      throw new Error();
+    };
+    console.error = function() {};
+  });
+  beforeEach(function() {
+    exited = false;
+  });
+  after(function() {
+    process.exit = oldProcessExit;
+    console.error = oldConsoleError;
+  });
+
   it('default result', function() {
     var conf = config.parseArgv(['node', 'livereloadx']);
     conf.should.have.property('port', 35729);
@@ -56,6 +76,13 @@ describe('config#parseArgv', function() {
     (function() {
       config.parseArgv(['node', 'livereloadx', '-p', 'a', 'dir']);
     }).should.throw();
+  });
+
+  it('unknown option', function() {
+    (function() {
+      config.parseArgv(['node', 'livereloadx', '--unknown', 'a', 'dir']);
+    }).should.throw();
+    exited.should.be.true;
   });
 });
 

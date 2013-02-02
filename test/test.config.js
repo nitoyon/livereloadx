@@ -39,6 +39,15 @@ describe('config#parseArgv', function() {
     conf.should.have.property('dir', 'dir');
   });
 
+  it('set static', function() {
+    var conf = config.parseArgv(['node', 'livereloadx', '-s']);
+    conf.should.have.property('static', true);
+  });
+
+  it('set proxy', function() {
+    var conf = config.parseArgv(['node', 'livereloadx', '-y', 'http://example.com/']);
+    conf.should.have.property('proxy', 'http://example.com/');
+  });
 
   it('set port', function() {
     var conf = config.parseArgv(['node', 'livereloadx', '--port', '80', 'dir']);
@@ -83,6 +92,12 @@ describe('config#parseArgv', function() {
       config.parseArgv(['node', 'livereloadx', '--unknown', 'a', 'dir']);
     }).should.throw();
     exited.should.be.true;
+  });
+
+  it('static and proxy', function() {
+    (function() {
+      config.parseArgv(['node', 'livereloadx', '-s', '-p', 'http://www.example.com/']);
+    }).should.throw();
   });
 });
 

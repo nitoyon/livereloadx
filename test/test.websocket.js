@@ -7,8 +7,8 @@ describe('WebSocketHandler', function() {
   var handler, ws;
 
   beforeEach(function() {
-    handler = new WebSocketHandler({}, { port: 8080 });
-    ws = new WebSocket('ws://localhost:8080');
+    handler = new WebSocketHandler({}, { port: 8000 });
+    ws = new WebSocket('ws://localhost:8000');
   });
 
   afterEach(function() {

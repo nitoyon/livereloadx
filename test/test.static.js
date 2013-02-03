@@ -81,6 +81,36 @@ describe('StaticHandler', function() {
     });
   });
 
+  it('should handle /euc-jp.html', function(done) {
+    http.get('http://localhost:8000/euc-jp.html', function(res) {
+      res.should.have.status(200);
+      res.should.be.html;
+      res.on('data', function(chunk) {
+        chunk.toString().should.match(/:8000\/livereload.js/);
+
+        // find A3 C5 A3 D5 A3 C3 A1 DD A3 CA A3 D0
+        for (var i = 0; i < chunk.length; i++) {
+          if (chunk[i] == 0xA3) {
+            break;
+          }
+        }
+        i.should.not.eql(chunk.length);
+        chunk[i +  1].should.be.eql(0xC5);
+        chunk[i +  2].should.be.eql(0xA3);
+        chunk[i +  3].should.be.eql(0xD5);
+        chunk[i +  4].should.be.eql(0xA3);
+        chunk[i +  5].should.be.eql(0xC3);
+        chunk[i +  6].should.be.eql(0xA1);
+        chunk[i +  7].should.be.eql(0xDD);
+        chunk[i +  8].should.be.eql(0xA3);
+        chunk[i +  9].should.be.eql(0xCA);
+        chunk[i + 10].should.be.eql(0xA3);
+        chunk[i + 11].should.be.eql(0xD0);
+        done();
+      });
+    });
+  });
+
   it('should handle /empty.htm', function(done) {
     http.get('http://localhost:8000/empty.htm', function(res) {
       res.should.have.status(200);

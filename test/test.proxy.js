@@ -133,10 +133,11 @@ describe('ProxyHandler', function() {
       http.get('http://localhost:8000/test.html', function(res) {
         res.should.have.status(200);
         res.should.have.header('content-type', 'text/html');
-        res.should.have.header('content-encoding', 'gzip');
-        // TODO: inject <script> tag
-        res.should.have.header('content-length', buffer.length.toString());
-        done();
+        res.headers.should.not.have.property('content-encoding');
+        res.on('data', function(chunk) {
+          chunk.toString().should.match(/<\/p><script>/);
+          done();
+        });
       });
     });
   });

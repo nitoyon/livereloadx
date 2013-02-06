@@ -25,6 +25,7 @@ $ npm -g install livereloadx
    * Embed [JavaScript snippet](#javascript-snippet) in your HTML files.
    * Install [browser extensions](http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-) (Safari, Chrome and Firefox only).
    * Run _LiveReloadX_ in [static mode](#static-mode) (Static HTML only).
+   * Run _LiveReloadX_ in [proxy mode](#proxy-mode)
 
 ### JavaScript snippet
 
@@ -37,26 +38,37 @@ $ npm -g install livereloadx
 Usage
 -----
 
-Start server on your command line.
+Start _LiveReloadX_ server.
 
 ```
 $ livereloadx [path/to/dir]
 ```
 
-Open the site. If you chose to use browser extensions, enable LiveReload by clicking the LiveReload toolbar button.
+If you chose to use browser extensions, enable LiveReload by clicking the LiveReload toolbar button.
 
-Now, when you modify any files under `path/to/dir`, your browser is automatically updated. Especially, the modified files are CSS or images, these files are updated dynamically without reloading your browser.
+When you open a page with JavaScript snippet, it connects to _LiveReloadX_ server using WebSocket. Now, when you modify any files under `path/to/dir`, your browser is automatically updated. Especially, the modified files are CSS or images, these files are updated dynamically without reloading your browser.
 
 
 ### Static mode
 
-Use `-s` or `--static` option to start sever in static mode.
+Use `-s` or `--static` option to run _LiveReloadX_ sever in static mode.
 
 ```
 livereloadx -s [-p 35729] [path/to/dir]
 ```
 
 In static mode, _LiveReloadX_ works as a static web server whose document root is `path/to/dir`. An access to `http://localhost:35729/` refers to `path/to/dir/index.html`. What's more, _LiveReloadX_ automatically add [JavaScript snippet](#javascript-snippet) to HTML file.
+
+
+### Proxy mode
+
+Use `-y http://example.com/` or `--proxy http://example.com/` option to run _LiveReloadX_ sever in proxy mode.
+
+```
+livereloadx -y http://example.com/ [-p 35729] [path/to/dir]
+```
+
+In proxy mode, _LiveReloadX_ works as a reverse proxy server that retrieves resources from `http://example.com/`. For example, an access to `http://localhost:35729/foo/` are forwarded to `http://example.com/foo/`, and then, the resources are returned to the client. What's more, _LiveReloadX_ automatically add [JavaScript snippet](#javascript-snippet) to HTML content.
 
 
 Running tests

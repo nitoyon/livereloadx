@@ -1,28 +1,37 @@
 var should = require('should')
-  , ServerResponse = require('http').ServerResponse
-  , server = require('../lib/server');
+  , http = require('http')
+  , LiveReloadJsHandler = require('../lib/server').LiveReloadJsHandler;
 
 describe('LiveReloadJsHandler', function() {
-  var handler = new server.LiveReloadJsHandler();
-  var req = {
-    'url': '/livereload.js',
-    'method': 'GET',
-    'httpVersionMajor': 1,
-    'httpVersionMinor': 1 };
-
-  it('should handle /livereload.js', function() {
-    var response = new ServerResponse(req);
-
-    handler.handle(req, response).should.be.true;
-    response.statusCode.should.equal(200);
-    response.output[0].indexOf("Content-Type: text/javascript").should.above(0);
+  var server;
+  beforeEach(function() {
+    server = http.createServer(function(req, res) {
+      if (!new LiveReloadJsHandler().handle(req, res)) {
+        res.writeHead(500);
+        res.write('error');
+        res.end();
+      }
+    }).listen(8000);
   });
 
-  it('should skip /', function() {
-    req.url = '/';
-    var response = new ServerResponse(req);
+  afterEach(function() {
+    server.close();
+  });
 
-    handler.handle(req, response).should.be.false;
-    response.output.should.have.length(0);
+  it('should handle /livereload.js', function(done) {
+    http.get('http://localhost:8000/livereload.js', function(res) {
+      res.should.have.status(200);
+      res.should.have.header('content-type', 'application/javascript');
+      res.on('end', function(chunk) {
+        done();
+      });
+    });
+  });
+
+  it('should skip /', function(done) {
+    http.get('http://localhost:8000/', function(res) {
+      res.should.have.status(500);
+      done();
+    });
   });
 });

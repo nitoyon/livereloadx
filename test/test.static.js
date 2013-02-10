@@ -9,8 +9,7 @@ describe('StaticHandler', function() {
   beforeEach(function() {
     config = {
       dir: __dirname + '/public',
-      port: 8000,
-      static: true
+      port: 8000
     }
 
     server = http.createServer(function(req, res) {
@@ -24,14 +23,6 @@ describe('StaticHandler', function() {
 
   afterEach(function() {
     server.close();
-  });
-
-  it('should not handle if static is not set', function(done) {
-    config.static = false;
-    http.get('http://localhost:8000/test.txt', function(res) {
-      res.should.have.status(500);
-      done();
-    });
   });
 
   it('should handle /test.txt', function(done) {

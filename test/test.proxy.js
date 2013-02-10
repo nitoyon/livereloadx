@@ -141,4 +141,37 @@ describe('ProxyHandler', function() {
       });
     });
   });
+
+  describe('with --prefer-local flag on', function() {
+    it('should handle text file (local file is found)', function(done) {
+      config['preferLocal'] = true;
+      http.get('http://localhost:8000/test.txt', function(res) {
+        res.should.have.status(200);
+        res.should.have.header('content-type', 'text/plain; charset=UTF-8');
+        res.on('data', function(chunk) {
+          chunk.toString().should.match(/This is test\.txt/);
+          done();
+        });
+      });
+    });
+
+    it('should handle text file (local file is not found)', function(done) {
+      remoteConfig = {
+        '/test-on-remote.txt': {
+          statusCode: 200,
+          headers: { 'content-type': 'text/plain' },
+          content: 'This is plain text'
+        }
+      };
+      config['preferLocal'] = true;
+      http.get('http://localhost:8000/test-on-remote.txt', function(res) {
+        res.should.have.status(200);
+        res.should.have.header('content-type', 'text/plain');
+        res.on('data', function(chunk) {
+          chunk.toString().should.eql('This is plain text');
+          done();
+        });
+      });
+    });
+  });
 });

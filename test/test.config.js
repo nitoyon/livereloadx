@@ -47,6 +47,13 @@ describe('config#parseArgv', function() {
   it('set proxy', function() {
     var conf = config.parseArgv(['node', 'livereloadx', '-y', 'http://example.com/']);
     conf.should.have.property('proxy', 'http://example.com/');
+    conf.should.have.property('preferLocal', false);
+  });
+
+  it('set proxy and prefer-local', function() {
+    var conf = config.parseArgv(['node', 'livereloadx', '-y', 'http://example.com/', '-l']);
+    conf.should.have.property('proxy', 'http://example.com/');
+    conf.should.have.property('preferLocal', true);
   });
 
   it('set port', function() {
@@ -97,6 +104,12 @@ describe('config#parseArgv', function() {
   it('static and proxy', function() {
     (function() {
       config.parseArgv(['node', 'livereloadx', '-s', '-p', 'http://www.example.com/']);
+    }).should.throw();
+  });
+
+  it('prefer-lcoal and proxy', function() {
+    (function() {
+      config.parseArgv(['node', 'livereloadx', '-l']);
     }).should.throw();
   });
 });

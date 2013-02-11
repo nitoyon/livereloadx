@@ -65,10 +65,12 @@ In static mode, _LiveReloadX_ works as a static web server whose document root i
 Use `-y http://example.com/` or `--proxy http://example.com/` option to run _LiveReloadX_ sever in proxy mode.
 
 ```
-livereloadx -y http://example.com/ [-p 35729] [path/to/dir]
+livereloadx -y http://example.com/ [-p 35729] [-l] [path/to/dir]
 ```
 
 In proxy mode, _LiveReloadX_ works as a reverse proxy server that retrieves resources from `http://example.com/`. For example, an access to `http://localhost:35729/foo/` are forwarded to `http://example.com/foo/`, and then, the resources are returned to the client. What's more, _LiveReloadX_ automatically add [JavaScript snippet](#javascript-snippet) to HTML content.
+
+If `-l` or `--prefer-local` option is set, _LiveReloadX_ prefers local files to remote resources. For example, when _LiveReloadX_ get an access to `http://localhost:35729/foo/`, it first checks `path/to/dir/foo/index.html`. If the file exists, it returns the content of the file, otherwise, it retrieves the content from `http://example.com/foo/`.
 
 
 Running tests

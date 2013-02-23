@@ -3,7 +3,7 @@ layout: default
 ---
 # LiveReloadX
 
-![Edit & Reload](/images/title.png)
+![Edit & Reload](images/title.png)
 
 Edit files, and browsers are reloaded automatically.
 

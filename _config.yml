@@ -1,5 +1,3 @@
 baseurl:     /
 pygments:    true
 markdown:    redcarpet
-redcarpet:
-  extensions: [autolink, tables, lax_spacing]

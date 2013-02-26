@@ -2,20 +2,40 @@
 <html lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <title>LiveReloadX</title>
+  <title>LiveReloadX | Reload your Browser Automatically</title>
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
   <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="stylesheets/default.css" type="text/css" />
+  <meta property="og:title" content="About LiveReloadX"/>
+  <meta property="og:url" content="http://tech.nitoyon.com{{ page.url | remove: 'index.html' }}"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="Edit files, and browsers are reloaded automatically. LiveReloadX is a command line tool based on LiveReload 2.X source code."/>
+  <meta property="og:image" content="http://nitoyon.github.com/livereloadx/images/title_square.png"/>
+  <meta property="og:site_name" content="LiveReloadX"/>
+  <meta property="fb:admins" content="1297551349" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
 </head>
 <body>
-<a href="https://github.com/nitoyon/livereloadx"><img style="position: absolute; top: 0; right: 0; border: 0; position: fixed" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+<a href="https://github.com/nitoyon/livereloadx"><img id="fork-me" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 
+<div id="wrap">
 <article>
 {{ content }}
 </article>
+</div>
 
 <footer>
-  &copy; 2013 <a href="https://github.com/nitoyon/">nitoyon</a>. All rights reserved.
+  <div id="social">
+  <iframe src="http://ghbtns.com/github-btn.html?user=nitoyon&repo=livereloadx&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+  <iframe src="http://ghbtns.com/github-btn.html?user=nitoyon&repo=livereloadx&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://nitoyon.github.com/" data-lang="en" data-size="horizontal" data-text="LiveReloadX | Reload your Browser Automatically" data-related="nitoyon" data-dnt="true">Tweet</a>
+  <div class="fb-like" data-send="false" data-layout="button_count" data-width="90" data-show-faces="false"></div>
+  </div>
+  <div id="copyright">&copy; 2013 <a href="https://github.com/nitoyon/">nitoyon</a>. All rights reserved.</div>
 </footer>
 
+<script type="text/javascript" src="scripts/main.js"></script>
 </body>
 </html>

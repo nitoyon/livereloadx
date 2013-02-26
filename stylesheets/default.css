@@ -3,6 +3,10 @@ body {
 	margin: 0;
 }
 
+div#wrap {
+	margin: 0 1em;
+}
+
 article {
 	max-width: 45em;
 	margin: 0 auto;
@@ -50,6 +54,13 @@ img {
 	width: auto\9; /* IE8 hack */
 }
 
+#fork-me {
+  top: 0;
+  right: 0;
+  border: 0;
+  position: fixed;
+}
+
 h1 {
 	text-align: center;
 	font-size: 4.0em;
@@ -57,6 +68,19 @@ h1 {
 	text-shadow: 0 0 .1em #ccc;
 	letter-spacing: -.03em;
 }
+
+
+@media screen and (max-width: 25em) {
+  h1 {
+    font-size: 2.5em;
+    margin-top: 2em;
+  }
+
+  #fork-me {
+    position: absolute;
+  }
+}
+
 
 h2 {
 	margin: 3em 0 .3em 0;
@@ -137,10 +161,18 @@ h3 {
 
 footer {
 	margin: 5em auto 0 auto;
-	padding: 2em 0;
+	padding: 3em 0 1em 0;
 	background: #99a;
 	color: white;
 	text-align: center;
+	   -moz-box-shadow: 0 0 1em rgba(0,0,0,0.3);
+	-webkit-box-shadow: 0 0 1em rgba(0,0,0,0.3);
+	     -o-box-shadow: 0 0 1em rgba(0,0,0,0.3);
+	    -ms-box-shadow: 0 0 1em rgba(0,0,0,0.3);
+}
+
+footer #social {
+	margin-bottom: 1em;
 }
 
 footer a:visited,

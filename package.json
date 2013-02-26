@@ -1,6 +1,6 @@
 {
   "name": "livereloadx",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "An implementation of the LiveReload 2 server in Node.js",
   "main": "lib/index",
   "bin": {
@@ -13,7 +13,7 @@
   "dependencies": {
     "commander": ">= 1.1.1",
     "debug": "~ 0.7.0",
-    "fsmonitor": ">= 0.2.0",
+    "fsmonitor": "~ 0.2.1",
     "http-proxy": "~ 0.8.7",
     "pause": "~ 0.0.1",
     "send": "~ 0.1.0",

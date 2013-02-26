@@ -7,11 +7,11 @@ layout: default
 
 Edit files, and browsers are reloaded automatically.
 
-_LiveReloadX_ is an implementation of the [LiveReload 2.X](http://livereload.com/) in Node.js.
+_LiveReloadX_ is a command line tool based on [LiveReload 2.X](http://livereload.com/) source code. LiveReloadX is:
 
-* Easy to install
-* Easy to run (Completely free of charge)
-* Simple and readable source code
+* easy to install (Windows, Mac and Linux are supported)
+* easy to run (Completely free of charge)
+* written with simple and readable source code
 
 
 ## How does this work?
@@ -19,10 +19,11 @@ _LiveReloadX_ is an implementation of the [LiveReload 2.X](http://livereload.com
 ![Diagram](images/how.png)
 
   1. Type `livereloadx path/to/dir` on your command line, then LiveReloadX starts:
-     * monitoring `path/to/dir`
+     * watching `path/to/dir`
      * running as a web server on port `35729` which serves `livereload.js` and acts as a WebSocket server.
   2. When a browser load `livereload.js`, it connects to the LiveReloadX server using WebSocket.
   3. If you modify files under `path/to/dir`, the server tells all clients to reload by themselves.
+     * When the modified file is CSS or images, the file is updated dynamically without reloading the browser.
 
 If you're not familliar with a command line interface, we recommend the [official version of LiveReload 2](http://livereload.com/) which has GUI,
 
@@ -30,27 +31,27 @@ If you're not familliar with a command line interface, we recommend the [officia
 ## Install
 
 1. Download and install [Node.js](http://nodejs.org/)
-2. Run `npm -g install livereloadx`
-3. Choose how to embed JavaScript snippet (see the next section for details)
+2. Run `npm install -g livereloadx`
+3. Choose how to embed a JavaScript snippet (see the next section for details)
 
 
-## Embed JavaScript snippet
+## Embed a JavaScript snippet
 
-You have to embed the JavaScript snippet in HTML pages to enable live reloading.
+You have to embed a JavaScript snippet in HTML pages to enable live reloading.
 
 Choose one of the following methods to embed the JavaScript snippet.
 
-   * Add the JavaScript snippet manually.
+   * Add manually.
    * Install the [browser extensions](http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-) (Safari, Chrome and Firefox only).
    * Use static mode
    * Use proxy mode
 
 
-### Add the JavaScript snippet manually
+### Add manually
 
 ![manually](images/manual.png)
 
-Add the following snippet to your HTML files. If you use an HTML template framework, add to HTML template files.
+Add the following snippet to your HTML files manually. If you use an HTML template framework, add to HTML template files.
 
 ```html
 <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +

@@ -15,6 +15,6 @@ _gaq.push(['_trackPageview']);
 
   addScript(('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js');
   addScript('//platform.twitter.com/widgets.js', 'twitter-wjs');
-  addScript('//connect.facebook.net/' + (Site.lang == "ja" ? "ja_JP" : "en_US") + '/all.js#xfbml=1&appId=306142992832693', 'facebook-jssdk');
+  addScript('//connect.facebook.net/en_US/all.js#xfbml=1&appId=306142992832693', 'facebook-jssdk');
 
 })(document);

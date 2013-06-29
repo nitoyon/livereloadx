@@ -1,3 +1,6 @@
+/*jshint expr: true*/
+'use strict';
+
 var should = require('should')
   , http = require('http')
   , ProxyHandler = require('../lib/proxy')

@@ -1,3 +1,6 @@
+/*jshint expr: true*/
+'use strict';
+
 var should = require('should')
   , livereloadx = require('../');
 

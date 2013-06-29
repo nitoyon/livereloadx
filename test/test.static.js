@@ -1,3 +1,6 @@
+/*jshint expr: true*/
+'use strict';
+
 var should = require('should')
   , EventEmitter = require('events').EventEmitter
   , http = require('http')
@@ -10,7 +13,7 @@ describe('StaticHandler', function() {
     config = {
       dir: __dirname + '/public',
       port: 8000
-    }
+    };
 
     server = http.createServer(function(req, res) {
       if (!new StaticHandler(config).handle(req, res)) {
@@ -81,7 +84,7 @@ describe('StaticHandler', function() {
 
         // find A3 C5 A3 D5 A3 C3 A1 DD A3 CA A3 D0
         for (var i = 0; i < chunk.length; i++) {
-          if (chunk[i] == 0xA3) {
+          if (chunk[i] === 0xA3) {
             break;
           }
         }

@@ -1,3 +1,6 @@
+/*jshint expr: true*/
+'use strict';
+
 var should = require('should')
   , http = require('http')
   , LiveReloadJsHandler = require('../lib/server').LiveReloadJsHandler;

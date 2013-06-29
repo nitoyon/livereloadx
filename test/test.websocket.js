@@ -1,3 +1,6 @@
+/*jshint expr: true*/
+'use strict';
+
 var should = require('should')
   , ServerResponse = require('http').ServerResponse
   , WebSocket = require('ws')
@@ -38,10 +41,10 @@ describe('WebSocketHandler', function() {
     });
     ws.on('message', function(data, flags) {
       var msg = JSON.parse(data);
-      if (msg.command == 'hello') {
+      if (msg.command === 'hello') {
         handler.send('/test.html', '{ "command": "reload", "path": "/test.html" }');
-      } else if (msg.command == 'reload') {
-        msg.path.should.equal('/test.html')
+      } else if (msg.command === 'reload') {
+        msg.path.should.equal('/test.html');
         done();
       }
     });

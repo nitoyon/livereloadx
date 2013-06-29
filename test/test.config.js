@@ -1,3 +1,6 @@
+/*jshint expr: true*/
+'use strict';
+
 var should = require('should')
   , config = require('../lib/config');
 
@@ -68,7 +71,7 @@ describe('config#parseArgv', function() {
     var conf = config.parseArgv(['node', 'livereloadx', '-v', 'dir']);
     conf.should.have.property('verbose', true);
 
-    var conf = config.parseArgv(['node', 'livereloadx', '--verbose', 'dir']);
+    conf = config.parseArgv(['node', 'livereloadx', '--verbose', 'dir']);
     conf.should.have.property('verbose', true);
   });
 
@@ -89,28 +92,32 @@ describe('config#parseArgv', function() {
   });
 
   it('invalid port', function() {
-    (function() {
+    var f = function() {
       config.parseArgv(['node', 'livereloadx', '-p', 'a', 'dir']);
-    }).should.throw();
+    };
+    f.should.throw();
   });
 
   it('unknown option', function() {
-    (function() {
+    var f = function() {
       config.parseArgv(['node', 'livereloadx', '--unknown', 'a', 'dir']);
-    }).should.throw();
+    };
+    f.should.throw();
     exited.should.be.true;
   });
 
   it('static and proxy', function() {
-    (function() {
+    var f = function() {
       config.parseArgv(['node', 'livereloadx', '-s', '-p', 'http://www.example.com/']);
-    }).should.throw();
+    };
+    f.should.throw();
   });
 
   it('prefer-lcoal and proxy', function() {
-    (function() {
+    var f = function() {
       config.parseArgv(['node', 'livereloadx', '-l']);
-    }).should.throw();
+    };
+    f.should.throw();
   });
 });
 
@@ -138,14 +145,16 @@ describe('config#setDefaultValue test', function() {
   });
 
   it('invalid key should throw', function() {
-    (function() {
+    var f = function() {
       config.setDefaultValue({invalid_key: 1});
-    }).should.throw();
+    };
+    f.should.throw();
   });
 
   it('invalid type should throw', function() {
-    (function() {
+    var f = function() {
       config.setDefaultValue({port: "80"});
-    }).should.throw();
+    };
+    f.should.throw();
   });
 });

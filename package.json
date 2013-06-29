@@ -10,6 +10,9 @@
     "type": "git",
     "url": "https://github.com/nitoyon/livereloadx.git"
   },
+  "bugs": {
+    "url": "https://github.com/nitoyon/livereloadx/issues"
+  },
   "dependencies": {
     "commander": ">= 1.1.1",
     "debug": "~ 0.7.0",
@@ -21,14 +24,26 @@
     "ws": "~ 0.4.25"
   },
   "devDependencies": {
+    "grunt": "~0.4.1",
     "mocha": ">= 1.7.4",
-    "should": ">= 1.2.1"
+    "should": ">= 1.2.1",
+    "grunt-contrib-jshint": "~0.1.1",
+    "grunt-contrib-watch": "~0.4.4",
+    "grunt-mocha-test": "~0.5.0"
   },
   "author": "Kenichi Saita <nitoyon@gmail.com>",
-  "license": "MIT",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/nitoyon/livereloadx/blob/master/LICENSE-MIT"
+    }
+  ],
   "readmeFilename": "README.md",
   "directories": {
     "test": "test"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
   },
   "scripts": {
     "test": "mocha"

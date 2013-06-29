@@ -1,3 +1,5 @@
 .gitignore
+.jshintrc
+Gruntfile.js
 gh-pages/
 test/

@@ -51,6 +51,7 @@
   "keywords": [
     "LiveReload",
     "browser",
+    "gruntplugin",
     "test"
   ]
 }

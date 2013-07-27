@@ -108,15 +108,130 @@ $ livereloadx [-s | -y] [-l] [-p 35927]  [path/to/dir]
 
   Options:
 
-    -h, --help          output usage information
-    -V, --version       output the version number
-    -p, --port <port>   change wait port
-    -l, --prefer-local  return a local file if it exists (proxy mode only)
-    -s, --static        enable static server mode
-    -v, --verbose       enable verbose log
-    -y, --proxy <url>   enable proxy server mode
-    -C, --no-liveCSS    disable liveCSS
-    -I, --no-liveImg    disable liveImg
+    -h, --help           output usage information
+    -V, --version        output the version number
+    --exclude <pattern>  exclude file matching pattern
+    --include <pattern>  don't exclude file matching pattern
+    -p, --port <port>    change wait port
+    -l, --prefer-local   return a local file if it exists (proxy mode only)
+    -s, --static         enable static server mode
+    -v, --verbose        enable verbose log
+    -y, --proxy <url>    enable proxy server mode
+    -C, --no-liveCSS     disable liveCSS
+    -I, --no-liveImg     disable liveImg```
+```
+
+
+## Run as a Grunt Task
+
+_LiveReloadX_ also works as a [Grunt](http://gruntjs.com/) task. Although [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch) supports LiveReload, it supports only "add manually" method and "browser extension" method. With _LiveReloadX_, you can use "static mode" and "proxy mode".
+
+### How to Start
+
+1. Setup Grunt environment by following [Getting started - Grunt: The JavaScript Task Runner](http://gruntjs.com/getting-started).
+2. Install LiveReloadX with the command `npm install livereloadx --save-dev`.
+3. Edit `Gruntfile.js`. Here is a sample.
+
+```javascript
+module.exports = function(grunt) {
+  grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
+    livereloadx: {
+      static: true,
+      dir: 'public'
+    }
+  });
+
+  grunt.loadNpmTasks('livereloadx');
+  grunt.registerTask('default', ['livereloadx']);
+};
+```
+
+For a more complex example, see [`Gruntfile.js` of this site](https://github.com/nitoyon/livereloadx/blob/gh-pages/Gruntfile.js)
+
+
+### Setting Grunt Task
+
+On the previous example, we initialized the _LiveReloadX_ task with `static` and `dir` properties. 
+
+Here is the list of options available.
+
+| Name       | Type    | Default | Detail                                             |
+|------------|---------|---------|----------------------------------------------------|
+|dir         |string   |`"."`    |Watch target directory.                             |
+|port        |number   |`35729`  |Change wait port (static mode or proxy mode only).  |
+|filter      |object   |`{...}`  |Files to be watched. (described later) |
+|prefer-local|boolean  |`false`  |Return a local file if it exists (proxy mode only). |
+|static      |boolean  |`false`  |Enable static server mode.                          |
+|verbose     |boolean  |`false`  |Enable verbose log.                                 |
+|proxy       |string   |`false`  |enable proxy server mode. <url> must be specified.  |
+|liveCSS     |boolean  |`true`   |Enable or disable liveCSS.                          |
+|liveImg     |boolean  |`true`   |Enable or disable liveImg.                          |
+
+#### filter option
+
+`filter` options should be an array of object which has `type` and `pattern` property. `type` property should be either `'include'` or `'exclude'`. `pattern` property is a pattern string. Filters is evaluated like an rsync.
+
+The default rules are as follows:
+
+```javascript
+  filter: [
+    {type: 'exclude', pattern: '.{git,svn}/'},
+    {type: 'include', pattern: '*/'},
+    {type: 'include', pattern: '*.{html,shtml,tmpl,xml,css,js,json,jpeg,jpg,gif,png,ico,cgi,php,py,pl,pm,rb}'},
+    {type: 'exclude', pattern: '*'}
+  ],
+```
+
+This means:
+
+  * `.git` and `.svn` directories are ignored.
+  * All directories are included, (we checks recursively).
+  * The files which has `html`, `shtml`, ... extensions are watched.
+  * The files which don't meet the above rules are ignored.
+
+If you specify `filter` option, these default rules are overwritten.
+
+
+#### Examples
+
+Run as normal mode (embed snippet or browser extension)
+
+```javascript
+    livereloadx: {
+      dir: 'public'
+    }
+```
+
+Run as static mode.
+
+```javascript
+    livereloadx: {
+      static: true,
+      dir: 'public'
+    }
+```
+
+
+Run as proxy mode.
+
+```javascript
+    livereloadx: {
+      proxy: "http://example.com/path/",
+      'prefer-local': true,
+      dir: 'public'
+    }
+```
+
+Specify filters.
+
+```javascript
+    livereloadx: {
+      dir: 'public',
+      filter: [
+        { type: 'include', pattern: '*' }
+      ]
+    }
 ```
 
 

@@ -42,7 +42,7 @@ pre code {
 	padding: 0;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
 	font-family: 'Lato', sans-serif;
 }
 
@@ -95,6 +95,31 @@ h3 {
 	border-bottom: 1px solid #eee;
 	color: #333;
 }
+
+h4 {
+	margin: 1.5em 0 .5em 0;
+	font-size: 1.4em;
+	color: #333;
+	font-weight: bold;
+}
+
+
+table {
+	border-collapse:collapse;
+	margin: 1em auto;
+}
+
+th, td {
+	border: 1px solid #666;
+	padding: .2em .4em;
+}
+
+th {
+	background: #999;
+	color: white;
+	font-weight: normal;
+}
+
 
 .highlight .hll { background-color: #ffffcc }
 .highlight .c { color: #408080; font-style: italic }

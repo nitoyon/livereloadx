@@ -1,9 +1,9 @@
 LiveReloadX
 ===========
 
-![Edit & Reload](http://nitoyon.github.com/livereloadx/images/title.png)
+![Edit & Reload](http://nitoyon.github.io/livereloadx/images/title.png)
 
-User documentation is under http://nitoyon.github.com/livereloadx/.
+User documentation is under http://nitoyon.github.io/livereloadx/.
 
 This is developper documentation. 
 
@@ -53,16 +53,18 @@ Install Ruby and Jekyll:
 gem install jekyll
 ```
 
-Run Jekyll on `gh-pages` branch:
+Install dependant modules:
 
 ```
-jekyll --auto
+cd gh-pages
+npm install
+npm install -g grunt-cli
 ```
 
-Run LiveReloadX:
+Run `grunt.js`.
 
 ```
-livereloadx -s
+grunt
 ```
 
 Now open `http://localhost:35927/_site/` on your browser.
@@ -73,7 +75,7 @@ Related Projects
 
 * [livereload](https://github.com/livereload/): Official version.
 * [mklabs/tiny-lr](https://github.com/mklabs/tiny-lr): Tiny reimplementation of LiveReload 2.X server in node.js.
-* [gruntjs/grunt-contrib-livereload](https://github.com/gruntjs/grunt-contrib-livereload): Grunt task.
+* [gruntjs/grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch#optionslivereload): Grunt task.
 * [josh/node-livereload](https://github.com/josh/node-livereload), [clonn/simple-livereload](https://github.com/clonn/simple-livereload), [khoomeister/livereloaded](https://github.com/khoomeister/livereloaded): Reimplementation of LiveReload 1.X server in node.js
 * [usualoma/node-livereload-hub](https://github.com/usualoma/node-livereload-hub): Yet another reimplementation of LiveReload 1.X server (Reload via the HTTP request)
 * [guard/guard-livereload](https://github.com/guard/guard-livereload): Ruby implementation running with guard.

@@ -1,0 +1,15 @@
+{
+  "name": "livereloadx-gh-pages",
+  "version": "0.0.1",
+  "description": "An implementation of the LiveReload 2 server in Node.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nitoyon/livereloadx.git"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-shell-spawn": "~0.2.4",
+    "grunt-contrib-watch": "~0.4.4",
+    "livereloadx": "~0.3.0"
+  }
+}

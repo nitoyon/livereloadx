@@ -1,3 +1,7 @@
 baseurl:     /
 pygments:    true
 markdown:    redcarpet
+exclude:     [Gruntfile.js, package.json, node_modules]
+
+redcarpet:
+  extensions: [autolink, tables]

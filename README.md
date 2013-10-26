@@ -37,10 +37,16 @@ git new-workdir . gh-pages gh-pages
 Running tests
 -------------
 
-Run mocha.
+Run unit tests.
 
 ```
-./node_modules/.bin/mocha
+grunt mochaTest
+```
+
+Run jshint and unit tests.
+
+```
+grunt
 ```
 
 
@@ -61,7 +67,7 @@ npm install
 npm install -g grunt-cli
 ```
 
-Run `grunt.js`.
+Run `grunt`.
 
 ```
 grunt

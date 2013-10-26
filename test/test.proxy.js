@@ -158,6 +158,35 @@ describe('ProxyHandler', function() {
       });
     });
 
+    it('should pass through POST req even if local file found', function(done) {
+      config['preferLocal'] = true;
+      remoteConfig = {
+        '/test.txt': {
+          statusCode: 200,
+          headers: { 'content-type': 'text/plain' },
+          content: 'remote file'
+        }
+      };
+
+      var options = {
+        hostname: 'localhost',
+        port: 8000,
+        path: '/test.txt',
+        method: 'POST'
+      };
+      var req = http.request(options, function(res) {
+        res.should.have.status(200);
+        res.should.have.header('content-type', 'text/plain');
+        res.on('data', function(chunk) {
+          chunk.toString().should.match(/remote file/);
+          done();
+        });
+      });
+
+      req.write('\n');
+      req.end();
+    });
+
     it('should handle text file (local file is not found)', function(done) {
       remoteConfig = {
         '/test-on-remote.txt': {

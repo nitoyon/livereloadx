@@ -1,6 +1,12 @@
 ChangeLog
 =========
 
+0.3.0 (Oct 26, 2013)
+--------------------
+
+* Fix #3: Reverse Proxy for HTTP POST not working with 'prefer local'
+
+
 0.3.0 (Jun 30, 2013)
 --------------------
 

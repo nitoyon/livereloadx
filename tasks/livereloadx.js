@@ -26,7 +26,7 @@ module.exports = function(grunt) {
       config_mod.dump(log.info.bind(log), config);
     } catch (e) {
       grunt.log.error(e);
-      return;
+      return false;
     }
 
     // start server

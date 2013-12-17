@@ -19,10 +19,21 @@ module.exports = function(grunt) {
       log_mod.verbose = true;
     }
 
+    // initialize wait
+    var config = grunt.config(this.name);
+    if ('wait' in config) {
+      if (config['wait']) {
+        // never go to next task
+        this.async();
+      }
+      // delete wait property because config_mod report it as invalid
+      delete config['wait'];
+    }
+
     // get config
     var log = log_mod('grunt');
     try {
-      var config = config_mod.setDefaultValue(grunt.config(this.name));
+      config = config_mod.setDefaultValue(config);
       config_mod.dump(log.info.bind(log), config);
     } catch (e) {
       grunt.log.error(e);

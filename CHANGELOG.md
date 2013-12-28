@@ -1,7 +1,14 @@
 ChangeLog
 =========
 
-0.3.0 (Oct 26, 2013)
+0.3.2 (Dec 29, 2013)
+--------------------
+
+* grunt task: add `wait` parameter
+* grunt task: stop when invalid parameter is given
+
+
+0.3.1 (Oct 26, 2013)
 --------------------
 
 * Fix #3: Reverse Proxy for HTTP POST not working with 'prefer local'

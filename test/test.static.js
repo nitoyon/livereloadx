@@ -32,8 +32,8 @@ describe('StaticHandler', function() {
     http.get('http://localhost:8000/test.txt', function(res) {
       res.should.have.status(200);
       res.on('data', function(chunk) {
-        chunk.should.match(/test\.txt content/);
-        chunk.should.not.match(/<script>/);
+        chunk.toString().should.match(/test\.txt content/);
+        chunk.toString().should.not.match(/<script>/);
         done();
       });
     });

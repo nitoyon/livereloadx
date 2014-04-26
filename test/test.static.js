@@ -45,7 +45,7 @@ describe('StaticHandler', function() {
       res.should.be.html;
       res.on('data', function(chunk) {
         chunk.toString().should.match(/<html>/);
-        chunk.toString().should.match(/:8000\/livereload.js/);
+        chunk.toString().should.match(/:8000\/livereload.js\?snipver=2&port=8000">/);
         chunk.toString().should.match(/script>'\)<\/script><\/body>/);
         done();
       });

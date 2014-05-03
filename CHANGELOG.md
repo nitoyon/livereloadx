@@ -1,10 +1,17 @@
 ChangeLog
 =========
 
+0.3.4 (May 3, 2014)
+--------------------
+
+* Rewrite location header in proxy mode (#9)
+* Add param of port number to injected script tag (#8)
+
+
 0.3.3 (Apr 26, 2014)
 --------------------
 
-* Fix port option #7
+* Fix port option (#7)
 
 
 0.3.2 (Dec 29, 2013)

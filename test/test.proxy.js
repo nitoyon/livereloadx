@@ -145,6 +145,22 @@ describe('ProxyHandler', function() {
     });
   });
 
+  it('should handle redirect', function(done) {
+    remoteConfig = {
+      '/redirect.html': {
+        statusCode: 302,
+        headers: {
+          'location': 'http://localhost:8001/test.html'},
+        content: ''
+      }
+    };
+    http.get('http://localhost:8000/redirect.html', function(res) {
+      res.should.have.status(302);
+      res.should.have.header('location', 'http://localhost:8000/test.html');
+      done();
+    });
+  });
+
   describe('with --prefer-local flag on', function() {
     it('should handle text file (local file is found)', function(done) {
       config['preferLocal'] = true;

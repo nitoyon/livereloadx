@@ -1,6 +1,12 @@
 ChangeLog
 =========
 
+0.3.5 (Jun 27, 2014)
+--------------------
+
+* Fix filter argument (--include & --exclude) order (#10)
+
+
 0.3.4 (May 3, 2014)
 --------------------
 

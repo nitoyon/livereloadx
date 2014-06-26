@@ -27,11 +27,15 @@ describe('config#parseArgv', function() {
 
   it('default result', function() {
     var conf = config.parseArgv(['node', 'livereloadx']);
+    var defaultValues = config.setDefaultValue({});
+
     conf.should.have.property('port', 35729);
     conf.should.have.property('verbose', false);
     conf.should.have.property('liveCSS', true);
     conf.should.have.property('liveImg', true);
     conf.should.have.property('dir', '.');
+    conf.should.have.property('filter');
+    conf.filter.should.eql(defaultValues.filter);
   });
 
   it('set dir', function() {
@@ -91,6 +95,17 @@ describe('config#parseArgv', function() {
     conf.should.have.property('liveImg', false);
   });
 
+  it('set include and exclude', function() {
+    var conf = config.parseArgv(['node', 'livereloadx', '--include=a',
+      '--exclude=b', '--include=c']);
+    conf.should.have.property('filter');
+    Array.isArray(conf.filter).should.be.true;
+    conf.filter.length.should.be.above(3);
+    conf.filter[0].should.eql({type: 'include', pattern: 'a'});
+    conf.filter[1].should.eql({type: 'exclude', pattern: 'b'});
+    conf.filter[2].should.eql({type: 'include', pattern: 'c'});
+  });
+
   it('invalid port', function() {
     var f = function() {
       config.parseArgv(['node', 'livereloadx', '-p', 'a', 'dir']);
@@ -121,7 +136,7 @@ describe('config#parseArgv', function() {
   });
 });
 
-describe('config#setDefaultValue test', function() {
+describe('config#setDefaultValue', function() {
   it('default result', function() {
     var conf = config.setDefaultValue({});
     conf.should.have.property('port', 35729);
@@ -156,5 +171,11 @@ describe('config#setDefaultValue test', function() {
       config.setDefaultValue({port: "80"});
     };
     f.should.throw();
+  });
+
+  it('should deep copy filter', function() {
+    var conf1 = config.setDefaultValue({});
+    var conf2 = config.setDefaultValue({});
+    conf1.filter.should.not.exactly(conf2.filter);
   });
 });

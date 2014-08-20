@@ -14,6 +14,8 @@ describe('Watcher', function() {
     return path.replace(/\\/g, '/');
   }
 
+  function includes_all() { return true; }
+
   // recursive rmdir
   function rmdirRecur(d) {
     var files = fs.readdirSync(d);
@@ -40,7 +42,7 @@ describe('Watcher', function() {
   });
 
   it('should watch the root dir', function(done) {
-    var watcher = new Watcher().watch(dir);
+    var watcher = new Watcher().watch(dir, includes_all);
     watcher.once('complete', function() {
       fs.appendFileSync(dir + '/test.txt', 'a');
     });
@@ -56,7 +58,7 @@ describe('Watcher', function() {
     var childDir = dir + '/child';
     fs.mkdirSync(childDir);
 
-    var watcher = new Watcher().watch(dir);
+    var watcher = new Watcher().watch(dir, includes_all);
     watcher.once('complete', function() {
       fs.appendFileSync(childDir + '/child_file.txt', 'a');
     });
@@ -72,7 +74,7 @@ describe('Watcher', function() {
     var childDir = dir + '/new';
     var count = 0;
 
-    var watcher = new Watcher().watch(dir);
+    var watcher = new Watcher().watch(dir, includes_all);
     watcher.once('complete', function() {
       fs.mkdirSync(childDir);
     });

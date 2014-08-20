@@ -1,6 +1,12 @@
 ChangeLog
 =========
 
+0.3.6 (Aug 21, 2014)
+--------------------
+
+* Stop watching excluded directories (#13)
+
+
 0.3.5 (Jun 27, 2014)
 --------------------
 

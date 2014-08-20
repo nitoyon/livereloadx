@@ -16,7 +16,7 @@
   "dependencies": {
     "commander": "~ 2.2.0",
     "debug": "~ 0.7.0",
-    "fsmonitor": "~ 0.2.1",
+    "fsmonitor": "~ 0.2.4",
     "http-proxy": "~ 0.8.7",
     "minimatch": "~ 0.2.11",
     "pause": "~ 0.0.1",

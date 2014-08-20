@@ -92,4 +92,26 @@ describe('Watcher', function() {
       }
     });
   });
+
+  it('should not watch a excluded dir', function(done) {
+    var childDir = dir + '/excluded';
+    var count = 0;
+
+    function exclude_the_dir(path) {
+      return path.match(/^excluded\//) === null;
+    }
+
+    var watcher = new Watcher().watch(dir, exclude_the_dir);
+    watcher.once('complete', function() {
+      fs.mkdirSync(childDir);
+      fs.appendFileSync(childDir + '/test.txt', 'a');
+      fs.appendFileSync(dir + '/ok.txt', 'a');
+    });
+    watcher.on('change', function(changes) {
+      r(changes.toString()).should.be.equal('+ok.txt\n');
+
+      watcher.close();
+      done();
+    });
+  });
 });

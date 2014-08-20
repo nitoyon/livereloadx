@@ -1,7 +1,6 @@
 /*jshint expr: true*/
 'use strict';
 
-// ONLY WORKS WITH 'fsmonitor.js' 0.2.3+
 var should = require('should')
   , fs = require('fs')
   , EventEmitter = require('events').EventEmitter

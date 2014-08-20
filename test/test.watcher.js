@@ -29,7 +29,7 @@ describe('Watcher', function() {
       }
     });
     fs.rmdirSync(d);
-  };
+  }
 
   beforeEach(function() {
     if (!fs.existsSync(dir)) {
@@ -83,7 +83,7 @@ describe('Watcher', function() {
       if (count === 1) {
         r(changes.toString()).should.be.equal('+new/\n');
         fs.appendFileSync(childDir + '/child_file.txt', 'a');
-      } else if (count == 2) {
+      } else if (count === 2) {
         r(changes.toString()).should.be.equal('+new/child_file.txt\n');
         watcher.close();
         done();

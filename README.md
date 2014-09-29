@@ -1,6 +1,8 @@
 LiveReloadX
 ===========
 
+[![Build Status](https://travis-ci.org/nitoyon/livereloadx.svg?branch=master)](https://travis-ci.org/nitoyon/livereloadx)
+
 ![Edit & Reload](http://nitoyon.github.io/livereloadx/images/title.png)
 
 User documentation is under http://nitoyon.github.io/livereloadx/.

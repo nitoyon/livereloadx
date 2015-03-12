@@ -21,7 +21,7 @@
     "minimatch": "~ 0.2.11",
     "pause": "~ 0.0.1",
     "send": "~ 0.9.3",
-    "ws": "~ 0.4.25"
+    "ws": "~ 0.7.1"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

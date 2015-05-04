@@ -1,6 +1,14 @@
 ChangeLog
 =========
 
+0.3.8 (May 4, 2015)
+--------------------
+
+* Add a configurable delay (`--delay`) (#18)
+* deps: ws@~0.7.1 (#23)
+* Enable caching npm (#21)
+
+
 0.3.7 (Sep 28, 2014)
 --------------------
 

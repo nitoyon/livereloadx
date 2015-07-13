@@ -7,7 +7,7 @@ LiveReloadX
 
 User documentation is under http://nitoyon.github.io/livereloadx/.
 
-This is developper documentation. 
+This is developer documentation. 
 
 
 Setting up a development environment

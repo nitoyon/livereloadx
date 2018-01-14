@@ -51,6 +51,12 @@ describe('config#parseArgv', function() {
     conf.should.have.property('static', true);
   });
 
+  it('set spa', function() {
+    var conf = config.parseArgv(['node', 'livereloadx', '-a']);
+    conf.should.have.property('static', true);
+    conf.should.have.property('spa', true);
+  });
+
   it('set proxy', function() {
     var conf = config.parseArgv(['node', 'livereloadx', '-y', 'http://example.com/']);
     conf.should.have.property('proxy', 'http://example.com/');

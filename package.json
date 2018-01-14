@@ -14,10 +14,10 @@
     "url": "https://github.com/nitoyon/livereloadx/issues"
   },
   "dependencies": {
-    "commander": "~2.13.0",
+    "commander": "~2.3.0",
     "debug": "~3.1.0",
     "fsmonitor": "~ 0.2.4",
-    "http-proxy": "~ 1.16.2",
+    "http-proxy": "~ 0.8.7",
     "minimatch": "~ 3.0.4",
     "pause": "~ 0.1.0",
     "send": "~ 0.16.1",

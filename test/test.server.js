@@ -24,7 +24,7 @@ describe('LiveReloadJsHandler', function() {
   it('should handle /livereload.js', function(done) {
     http.get('http://localhost:8000/livereload.js', function(res) {
       res.should.have.status(200);
-      res.should.have.header('content-type', 'application/javascript');
+      res.should.have.header('content-type', 'application/javascript; charset=UTF-8');
       res.on('data', function(data) {});
       res.on('end', function(chunk) {
         done();

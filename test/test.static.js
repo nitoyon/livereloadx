@@ -116,3 +116,65 @@ describe('StaticHandler', function() {
     });
   });
 });
+
+describe('StaticHandler#SPA', function() {
+  var server, config;
+  var handled, handleResult;
+  beforeEach(function() {
+    config = {
+      dir: __dirname + '/public',
+      spa: true,
+      filter: [{type: 'include', pattern: '*/'}, {type: 'include', pattern: '*.{html,js}'}, {type: 'exclude', pattern: '*'}],
+      port: 8000
+    };
+
+    server = http.createServer(function(req, res) {
+      if (!new StaticHandler(config).handle(req, res)) {
+        res.writeHead(500);
+        res.write("static is disabled");
+        res.end();
+      }
+    }).listen(8000);
+  });
+
+  afterEach(function() {
+    server.close();
+  });
+
+  it('should handle /rewrite', function(done) {
+    http.get('http://localhost:8000/rewrite', function(res) {
+      res.should.have.status(200);
+      res.should.be.html;
+      res.on('data', function(chunk) {
+        chunk.toString().should.match(/<html>/);
+        chunk.toString().should.match(/<p>index<\/p>/);
+        chunk.toString().should.match(/:8000\/livereload.js\?snipver=2&port=8000">/);
+        chunk.toString().should.match(/script>'\)<\/script><\/body>/);
+        done();
+      });
+    });
+  });
+
+  it('should handle /rewrite/me', function(done) {
+    http.get('http://localhost:8000/rewrite/me', function(res) {
+      res.should.have.status(200);
+      res.should.be.html;
+      res.on('data', function(chunk) {
+        chunk.toString().should.match(/<html>/);
+        chunk.toString().should.match(/<p>index<\/p>/);
+        chunk.toString().should.match(/:8000\/livereload.js\?snipver=2&port=8000">/);
+        chunk.toString().should.match(/script>'\)<\/script><\/body>/);
+        done();
+      });
+    });
+  });
+
+  it('should not handle /rewrite.js', function(done) {
+    http.get('http://localhost:8000/rewrite.js', function(res) {
+      res.should.have.status(404);
+      res.on('data', function(chunk) {
+        done();
+      });
+    });
+  });
+});

@@ -6,6 +6,6 @@ cache:
     - node_modules
 
 node_js:
-  - "0.10"
+  - "4"
 before_script:
   - npm install -g grunt-cli

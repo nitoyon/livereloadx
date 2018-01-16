@@ -42,7 +42,7 @@ You have to embed a JavaScript snippet in HTML pages to enable live reloading.
 Choose one of the following methods to embed the JavaScript snippet.
 
    * Add manually.
-   * Install the [browser extensions](http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-) (Safari, Chrome and Firefox only).
+   * Install the [browser extensions](http://livereload.com/extensions/) (Safari, Chrome and Firefox only).
    * Use static mode
    * Use proxy mode
 

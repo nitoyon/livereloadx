@@ -1,6 +1,13 @@
 ChangeLog
 =========
 
+0.3.10 (Jan 31, 2018)
+--------------------
+
+* Add `-a` / `--spa` options to enable Single Page Application mode, which means
+  any non-existing, non-matched path will return the index (#36).
+
+
 0.3.9 (Oct 24, 2015)
 --------------------
 

@@ -118,7 +118,8 @@ $ livereloadx [-s | -y] [-l] [-p 35927]  [path/to/dir]
     -v, --verbose        enable verbose log
     -y, --proxy <url>    enable proxy server mode
     -C, --no-liveCSS     disable liveCSS
-    -I, --no-liveImg     disable liveImg```
+    -I, --no-liveImg     disable liveImg
+    --delay <ms>         delay livereload after milliseconds when file change detected
 ```
 
 
